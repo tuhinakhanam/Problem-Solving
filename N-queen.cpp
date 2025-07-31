@@ -16,6 +16,18 @@ void solve(vector<vector<int>> &board, int col, int n) {
         printsolution(board, n);
         return;
     }
+
+    // 1 case solve karo
+    for(int row = 0; row < n; row++) {
+        if(issafe(row, col, board, n)) {
+            board[row][col] = 1;
+            
+            // call the functinon recursively
+            solve(board, col + 1, n);
+            // backtracking
+            board[row][col] = 0;
+        }
+    }
 }
 
 int main() {
